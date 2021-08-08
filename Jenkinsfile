@@ -15,7 +15,7 @@ pipeline {
 
         stage('Run App') {
             steps {
-                sh 'cd shege && cp target/*.jar /tmp/direction.jar && java -jar /tmp/direction.jar && loginname=myname loginpass=mypass api_key=***** java -jar /tmp/direction.jar'
+                sh 'cd shege && cp target/*.jar /tmp/direction.jar && java -jar /tmp/direction.jar && loginname=segun loginpass=segun api_key=***** java -jar /tmp/direction.jar'
             }
         }
     }

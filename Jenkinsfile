@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build App') {
             steps {
-                sh 'cd 2021-devopstraining-miniproject && /usr/bin/mvn clean package && cp target/*.jar /tmp/direction.jar'
+                sh 'cd 2021-devopstraining-miniproject && ls && /usr/bin/mvn clean package && cp target/*.jar /tmp/direction.jar'
             }
         }
 

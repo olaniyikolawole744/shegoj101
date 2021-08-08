@@ -15,7 +15,7 @@ pipeline {
 
         stage('Run App') {
             steps {
-                sh 'cd devopstraining-miniproject && cp target/*.jar /tmp/direction.jar && java -jar /tmp/direction.jar && loginname=myname loginpass=mypass api_key=my_google_api_key java -jar /tmp/direction.jar'
+                sh 'cp target/*.jar /tmp/direction.jar && java -jar /tmp/direction.jar && loginname=myname loginpass=mypass api_key=my_google_api_key java -jar /tmp/direction.jar'
             }
         }
     }

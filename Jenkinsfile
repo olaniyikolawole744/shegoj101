@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Create Docker Image.') {
             steps {
-                sh 'ls && cd shege && ls && sudo docker build -t direction-dev:latest .'}
+                sh 'ls && cd shege && ls && docker build -t direction-dev:latest .'}
         }
 
         stage('Build App.') {

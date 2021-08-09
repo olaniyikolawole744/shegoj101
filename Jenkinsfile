@@ -7,13 +7,13 @@ pipeline {
     }
 
     stages {
-        stage('Build App') {
+        stage('Build App.') {
             steps {
                 sh 'ls && cd shege && ls && /usr/bin/mvn clean package && cp target/*.jar /tmp/direction.jar'
             }
         }
 
-        stage('Run App') {
+        stage('Run App.') {
             steps {
                 sh 'cd shege && cp target/*.jar /tmp/direction.jar && java -jar /tmp/direction.jar && loginname=***** loginpass=***** api_key=***** java -jar /tmp/direction.jar'
             }

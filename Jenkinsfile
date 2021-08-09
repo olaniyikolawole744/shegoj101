@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Create Docker Image.') {
+            steps {
+                sh 'ls && cd shege && ls && docker build -t direction-dev:latest .'}
+        }
+
         stage('Build App.') {
             steps {
                 sh 'ls && cd shege && ls && /usr/bin/mvn clean package && cp target/*.jar /tmp/direction.jar'

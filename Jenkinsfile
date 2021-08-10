@@ -4,9 +4,15 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials ('dockerhub-id')
     }
     stages {
-        stage('Create Docker Image.') {
+        stage('Build Docker Image.') {
             steps {
                 sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/olanini:latest .'
+                }
+            }
+        
+        stage('Login to Dockerhub.') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | DOCKER -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
                 }
             }
 

@@ -22,12 +22,6 @@ pipeline {
                 }
             }
 
-        stage('Login to Dockerhub.') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
-                }
-            }
-
         stage('Pull Docker Image from Dockerhub.') {
             steps {
                 sh 'docker pull olaniyikolawole744/olanini:latest'

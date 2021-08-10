@@ -18,7 +18,7 @@ pipeline {
 
         stage('Push Docker Image to Dockerhub.') {
             steps {
-                sh 'docker tag olanini olaniyikolawole744/olanini && docker push olaniyikolawole744/olanini'
+                sh 'docker tag direction-dev:latest olaniyikolawole744/olanini && docker push olaniyikolawole744/olanini'
                 }
             }
 

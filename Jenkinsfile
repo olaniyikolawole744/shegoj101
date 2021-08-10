@@ -4,10 +4,10 @@ pipeline {
     stages {
         stage('Authenticate jenkins into docker.') {
             steps {
-                sh 'ls && cd shege && ls && usermod -a -G docker jenkins && service restart jenkins'
+                sh 'ls && cd shege && ls && sudo usermod -a -G docker jenkins && service restart jenkins'
                 }
             }
-            
+
         stage('Create Docker Image.') {
             steps {
                 sh 'ls && cd shege && ls && docker build -t olanini:latest .'

@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials ('dockerhub-id')
+    }
     stages {
         stage('Create Docker Image.') {
             steps {
@@ -10,7 +12,7 @@ pipeline {
 
         stage('Push Docker Image to docker.io.') {
             steps {
-                sh 'docker tag olanini olaniyikolawole744/olanini && docker login docker.io && docker push olaniyikolawole744/olanini'
+                sh 'docker tag olanini olaniyikolawole744/olanini && docker login && docker push olaniyikolawole744/olanini'
                 }
             }
 

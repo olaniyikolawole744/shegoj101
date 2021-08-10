@@ -4,14 +4,14 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials ('dockerhub-id')
     }
     stages {
-        stage('Login to Dockerhub.') {
+        stage('Login to Dockerhub') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
                 }
             }
 
 
-        stage('Build Docker Master Branch Image.') {
+        stage('Build Docker Master Branch Image') {
             when{
                 
                 branch "main"
@@ -24,7 +24,7 @@ pipeline {
             }
 
 
-        stage('Build Docker Develop Branch Image.') {
+        stage('Build Docker Develop Branch Image') {
             when{
                 
                 branch "develop"

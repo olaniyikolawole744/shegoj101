@@ -9,20 +9,15 @@ pipeline {
     stages {
         stage('Create Docker Image.') {
             steps {
-                sh 'ls && cd shege && ls && docker build -t direction-dev:latest .'}
-        }
-
-        stage('Build App.') {
-            steps {
-                sh 'ls && cd shege && ls && /usr/bin/mvn clean package && cp target/*.jar /tmp/direction.jar'
+                sh 'ls && cd shege && ls && docker build -t sudo docker build -t olanini:latest .'
+                }
             }
-        }
 
-        stage('Run App.') {
+        stage('Run docker Image.') {
             steps {
-                sh 'cd shege && cp target/*.jar /tmp/direction.jar && loginname=myname loginpass=mypass api_key=my_google_api_key java -jar /tmp/direction.jar'
+                sh 'sudo docker run -p 9999:9999 -e loginname=myname -e loginpass=mypass -e api_key=*****  olanini'
+                }
             }
         }
     }
-}
-        
+

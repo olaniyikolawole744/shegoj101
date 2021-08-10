@@ -4,35 +4,38 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials ('dockerhub-id')
     }
     stages {
-        stage('Build Docker Image.') {
-            steps {
-                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/olanini:latest .'
-                }
-            }
-        
         stage('Login to Dockerhub.') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
                 }
             }
 
-        stage('Push Docker Image to Dockerhub.') {
+
+        stage('Build Docker Master Branch Image.') {
+            when{
+                
+                branch "main"
+            }
             steps {
-                sh 'docker tag direction-dev:latest olaniyikolawole744/olanini && docker push olaniyikolawole744/olanini'
+                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-prod:latest . /
+                && docker tag direction-prod olaniyikolawole744/direction-prod && docker push olaniyikolawole744/direction-prod /
+                && docker pull olaniyikolawole744/direction-prod:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-prod'
                 }
             }
 
-        stage('Pull Docker Image from Dockerhub.') {
+
+        stage('Build Docker Develop Branch Image.') {
+            when{
+                
+                branch "develop"
+            }
             steps {
-                sh 'docker pull olaniyikolawole744/olanini:latest'
+                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-dev:latest . /
+                && docker tag direction-dev olaniyikolawole744/direction-dev && docker push olaniyikolawole744/direction-dev /
+                && docker pull olaniyikolawole744/direction-dev:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-dev'
                 }
             }
 
-        stage('Run Docker Image.') {
-            steps {
-                sh 'docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  olanini'
-                }
-            }
         }
     }
 

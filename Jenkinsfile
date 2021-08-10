@@ -16,11 +16,18 @@ pipeline {
                 }
             }
 
-        stage('Push Docker Image to docker.io.') {
+        stage('Push Docker Image to Dockerhub.') {
             steps {
                 sh 'docker tag olanini olaniyikolawole744/olanini && docker push olaniyikolawole744/olanini'
                 }
             }
+
+        stage('Pull Docker Image from Dockerhub.') {
+            steps {
+                sh 'docker pull olaniyikolawole744/olanini:latest'
+                }
+            }
+
 
         stage('Run Docker Image.') {
             steps {

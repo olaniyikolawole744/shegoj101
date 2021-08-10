@@ -12,7 +12,7 @@ pipeline {
 
         stage('Push Docker Image to docker.io.') {
             steps {
-                sh 'docker tag olanini olaniyikolawole744/olanini && docker login && docker push olaniyikolawole744/olanini'
+                sh 'docker tag olanini olaniyikolawole744/olanini && docker push olaniyikolawole744/olanini'
                 }
             }
 

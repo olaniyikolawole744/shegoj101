@@ -17,8 +17,8 @@ pipeline {
                 branch "main"
             }
             steps {
-                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-prod:latest . /
-                && docker tag direction-prod olaniyikolawole744/direction-prod && docker push olaniyikolawole744/direction-prod /
+                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-prod:latest . \
+                && docker tag direction-prod olaniyikolawole744/direction-prod && docker push olaniyikolawole744/direction-prod \
                 && docker pull olaniyikolawole744/direction-prod:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-prod'
                 }
             }
@@ -30,8 +30,8 @@ pipeline {
                 branch "develop"
             }
             steps {
-                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-dev:latest . /
-                && docker tag direction-dev olaniyikolawole744/direction-dev && docker push olaniyikolawole744/direction-dev /
+                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-dev:latest . \
+                && docker tag direction-dev olaniyikolawole744/direction-dev && docker push olaniyikolawole744/direction-dev \
                 && docker pull olaniyikolawole744/direction-dev:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-dev'
                 }
             }

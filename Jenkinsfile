@@ -9,13 +9,13 @@ pipeline {
     stages {
         stage('Create Docker Image.') {
             steps {
-                sh 'ls && cd shege && ls && docker build -t sudo docker build -t olanini:latest .'
+                sh 'ls && cd shege && ls && docker build -t olanini:latest .'
                 }
             }
 
         stage('Run docker Image.') {
             steps {
-                sh 'sudo docker run -p 9999:9999 -e loginname=myname -e loginpass=mypass -e api_key=*****  olanini'
+                sh 'docker run -p 9999:9999 -e loginname=myname -e loginpass=mypass -e api_key=*****  olanini'
                 }
             }
         }

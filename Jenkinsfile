@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-prod:latest . \
                 && docker tag direction-prod olaniyikolawole744/direction-prod && docker push olaniyikolawole744/direction-prod \
-                && docker pull olaniyikolawole744/direction-prod:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-prod'
+                && docker pull olaniyikolawole744/direction-prod && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-prod'
                 }
             }
 

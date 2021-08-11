@@ -12,9 +12,9 @@ pipeline {
 
 
         stage('Manage Master Branch') {
-            agent {
+            when {
                 
-                label "master"
+                branch "main"
             }
             steps {
                 sh 'ls && cd shege && ls && docker build -t direction-prod:latest . \
@@ -25,9 +25,9 @@ pipeline {
 
 
         stage('Manage Develop Branch') {
-            agent {
+            when {
                 
-                label "master"
+                branch "develop"
             }
             steps {
                 sh 'ls && cd shege && ls && docker build -t direction-dev:latest . \

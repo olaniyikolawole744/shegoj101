@@ -11,7 +11,7 @@ pipeline {
             }
 
 
-        stage('Build Docker Master Branch Image') {
+        stage('Manage Master Branch') {
             when{
                 
                 branch "main"
@@ -24,15 +24,15 @@ pipeline {
             }
 
 
-        stage('Build Docker Develop Branch Image') {
-            when{
+        stage('Manage Develop Branch') {
+            agent {
                 
-                branch "develop"
+                label "jenagent"
             }
             steps {
-                sh 'ls && cd shege && ls && docker build -t olaniyikolawole744/direction-dev:latest . \
-                && docker tag direction-dev olaniyikolawole744/direction-dev && docker push olaniyikolawole744/direction-dev \
-                && docker pull olaniyikolawole744/direction-dev:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-dev'
+                sh 'ls && cd shege && ls && docker build -t direction-dev:latest . \
+                && docker tag direction-dev:latest olaniyikolawole744/direction-dev:latest && docker push olaniyikolawole744/direction-dev:latest \
+                && docker pull olaniyikolawole744/direction-dev:latest && docker run -d -p 9999:8080 -e loginname=myname -e loginpass=mypass -e api_key=*****  direction-dev:latest'
                 }
             }
 

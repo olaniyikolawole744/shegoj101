@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Login to Dockerhub') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
             }
 
@@ -27,7 +27,7 @@ pipeline {
         stage('Manage Develop Branch') {
             agent {
                 
-                label "jenagent"
+                label "master"
             }
             steps {
                 sh 'ls && cd shege && ls && docker build -t direction-dev:latest . \
